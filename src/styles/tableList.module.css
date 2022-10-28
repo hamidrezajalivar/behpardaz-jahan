@@ -1,0 +1,8 @@
+.table {
+    width: 100%;
+    text-align: center;
+    margin: auto;
+}
+.table tr{
+    height:60px;
+}
