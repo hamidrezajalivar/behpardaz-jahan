@@ -7,7 +7,7 @@ import Row from 'react-bootstrap/Row';
 import axios from 'axios';
 import userEvent from '@testing-library/user-event';
 
-const FormUser = ({setShow}) => {
+const FormAddUser = ({setShow}) => {
     const [validated, setValidated] = useState(false);
     const [user, setuser] = useState({ firstName: "", lastName: "", city: "", address: "" });
 
@@ -28,7 +28,7 @@ const FormUser = ({setShow}) => {
         setValidated(true);
 
         axios
-            .post("https://63581241c27556d289368088.mockapi.io/api/v1/users", { ...user })
+            .post("http://localhost:3001/posts", { ...user })
             .then((res) => console.log("post", res.data))
             .catch();
            setShow(false);
@@ -84,4 +84,4 @@ const FormUser = ({setShow}) => {
     );
 }
 
-export default FormUser;
+export default FormAddUser;

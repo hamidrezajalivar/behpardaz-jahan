@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 import Button from 'react-bootstrap/Button';
-import FormUser from './formUser';
+import FormAddUser from './formAddUser';
 import Modal from 'react-bootstrap/Modal';
 
 const AddUser = () => {
@@ -19,7 +19,7 @@ const AddUser = () => {
         <Modal.Header closeButton>
           <Modal.Title>add new user</Modal.Title>
         </Modal.Header>
-        <Modal.Body><FormUser setShow={setShow}/></Modal.Body>
+        <Modal.Body><FormAddUser setShow={setShow}/></Modal.Body>
       
       </Modal>
         </>

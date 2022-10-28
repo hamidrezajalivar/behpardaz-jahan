@@ -10,7 +10,7 @@ const UserList = () => {
     useEffect(() => {
         function dataUsers() {
             axios
-                .get('https://63581241c27556d289368088.mockapi.io/api/v1/users')
+                .get('http://localhost:3001/posts')
                 .then((response) => setList(response.data))
                 .catch((err) => console.log(err))
         }
