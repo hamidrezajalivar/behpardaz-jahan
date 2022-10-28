@@ -6,3 +6,7 @@
 .table tr{
     height:60px;
 }
+.table tr{
+   margin: auto;
+   vertical-align: middle;
+}

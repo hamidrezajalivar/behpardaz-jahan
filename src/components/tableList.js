@@ -1,7 +1,7 @@
 import { BsEyeFill, BsPencilFill } from "react-icons/bs";
 
 import Button from 'react-bootstrap/Button';
-import FormEditUser from './formEditUser';
+import FormUser from './formUser';
 import { Link } from 'react-router-dom';
 import Modal from 'react-bootstrap/Modal';
 import Table from 'react-bootstrap/Table';
@@ -24,7 +24,7 @@ const TableList = ({ dataList }) => {
 
 
 
-            <Table striped bordered hover size="sm" className={styles.table}>
+            <Table striped bordered hover responsive size="sm" className={styles.table}>
                 <thead>
                     <tr>
                         <th>#</th>
@@ -49,8 +49,8 @@ const TableList = ({ dataList }) => {
                             <td>{item.address}</td>
                             <td>{item.createdAt}</td>
                             <td>
-                                <div className="d-flex justify-content-around">
-                                    <Link to={`/users/${item.id}`}><BsEyeFill /></Link>
+                                <div className="d-flex justify-content-around align-items-center">
+                                    <Link to={`/users/${item.id}`}><BsEyeFill style={{fontSize:"27px",margin:"5px 10px"}} /></Link>
                                     <Button value={item.id} variant="primary" onClick={(event) => handleShowEdit(event)}>edit</Button>
 
                                 </div>
@@ -69,7 +69,7 @@ const TableList = ({ dataList }) => {
                 <Modal.Header closeButton>
                     <Modal.Title>Edit user</Modal.Title>
                 </Modal.Header>
-                <Modal.Body><FormEditUser id={itemId} /></Modal.Body>
+                <Modal.Body><FormUser id={itemId} edit={true}/></Modal.Body>
 
             </Modal>
 

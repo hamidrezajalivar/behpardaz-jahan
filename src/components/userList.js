@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 
 import AddUser from './addUser';
+import Container from 'react-bootstrap/Container';
 import TableList from './tableList';
 import axios from 'axios';
 
@@ -21,10 +22,12 @@ const UserList = () => {
 
     return (
         <>
+           <Container>
             <div className="my-5">
             <AddUser />
             </div>
             <TableList dataList={list} />
+            </Container>
         </>
     );
 }

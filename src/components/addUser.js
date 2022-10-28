@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 import Button from 'react-bootstrap/Button';
-import FormAddUser from './formAddUser';
+import FormUser from './formUser';
 import Modal from 'react-bootstrap/Modal';
 
 const AddUser = () => {
@@ -11,7 +11,7 @@ const AddUser = () => {
     const handleShow = () => setShow(true);
     return (
         <>
-      <Button variant="primary" onClick={handleShow}>
+      <Button size="lg" variant="primary" onClick={handleShow}>
        add user
       </Button>
 
@@ -19,8 +19,8 @@ const AddUser = () => {
         <Modal.Header closeButton>
           <Modal.Title>add new user</Modal.Title>
         </Modal.Header>
-        <Modal.Body><FormAddUser setShow={setShow}/></Modal.Body>
-      
+        <Modal.Body><FormUser setShow={setShow} /></Modal.Body>
+
       </Modal>
         </>
     );

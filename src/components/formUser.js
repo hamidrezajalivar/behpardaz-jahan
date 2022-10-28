@@ -1,22 +1,21 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import axios from 'axios';
-import userEvent from '@testing-library/user-event';
 
-const FormAddUser = ({setShow}) => {
+const FormEditUser = (props) => {
     const [validated, setValidated] = useState(false);
     const [user, setuser] = useState({ firstName: "", lastName: "", city: "", address: "" });
 
-   
+
     const changeHandler = (event) => {
         setuser({ ...user, [event.target.name]: event.target.value });
 
     }
-  
+
     const handleSubmit = (event) => {
         event.preventDefault();
         const form = event.currentTarget;
@@ -27,11 +26,27 @@ const FormAddUser = ({setShow}) => {
 
         setValidated(true);
 
-        axios
-            .post("http://localhost:3001/posts", { ...user })
-            .then((res) => console.log("post", res.data))
-            .catch();
-           setShow(false);
+        if (props.edit) {
+
+            axios
+                .put(`http://localhost:3001/posts/${props.id}`, { ...user })
+                .then((res) => setuser(res.data))
+                .catch();
+
+        }
+        else {
+            axios
+                .post("http://localhost:3001/posts", { ...user })
+                .then((res) => console.log("post", res.data))
+                .catch();
+
+        }
+        props.setShow(false)
+
+
+
+
+
     };
     return (
         <Form noValidate validated={validated} onSubmit={handleSubmit} >
@@ -79,9 +94,9 @@ const FormAddUser = ({setShow}) => {
 
             </Row>
 
-            <Button type="submit">Submit form</Button>
+            <Button type="submit">{props.edit ? "Edit " : "Submit"}</Button>
         </Form>
     );
 }
 
-export default FormAddUser;
+export default FormEditUser;
