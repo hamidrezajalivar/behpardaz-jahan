@@ -5,25 +5,25 @@ import FormUser from './formUser';
 import Modal from 'react-bootstrap/Modal';
 
 const AddUser = () => {
-    const [show, setShow] = useState(false);
+  const [show, setShow] = useState(false);
 
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
-    return (
-        <>
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+  return (
+    <>
       <Button size="lg" variant="primary" onClick={handleShow}>
-       add user
+        add user
       </Button>
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>add new user</Modal.Title>
         </Modal.Header>
-        <Modal.Body><FormUser setShow={setShow} /></Modal.Body>
+        <Modal.Body><FormUser setShow={setShow} add={true} /></Modal.Body>
 
       </Modal>
-        </>
-    );
+    </>
+  );
 }
 
 export default AddUser;

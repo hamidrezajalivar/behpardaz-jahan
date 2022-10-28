@@ -22,22 +22,22 @@ const UserDetails = () => {
         <>
 
 
-          <div>
-            <Card style={{ width: '75%',margin:"auto" }} className="d-flex align-items-center mx-auto mt-5">
+            <div>
+                <Card style={{ width: '75%', margin: "auto" }} className="d-flex align-items-center mx-auto mt-5">
 
-                <Card.Body>
-                    <Card.Title>Full Name : {user.firstName + " "+ user.lastName}</Card.Title>
-                    <Card.Text>
-                        City : {user.city}
-                        <br/>
-                        Address : {user.address}
-                        <br/>
-                        CreatedAt : {user.createdAt}
-                    </Card.Text>
-                    <Link to="/"><Button variant="primary">All List</Button></Link>
-                </Card.Body>
-            </Card>
-</div>
+                    <Card.Body>
+                        <Card.Title>Full Name : {user.firstName + " " + user.lastName}</Card.Title>
+                        <Card.Text>
+                            City : {user.city}
+                            <br />
+                            Address : {user.address}
+                            <br />
+                            CreatedAt : {user.createdAt}
+                        </Card.Text>
+                        <Link to="/"><Button variant="primary">All List</Button></Link>
+                    </Card.Body>
+                </Card>
+            </div>
 
         </>
     );

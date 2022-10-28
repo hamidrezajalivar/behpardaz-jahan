@@ -22,11 +22,11 @@ const UserList = () => {
 
     return (
         <>
-           <Container>
-            <div className="my-5">
-            <AddUser />
-            </div>
-            <TableList dataList={list} />
+            <Container>
+                <div className="my-5">
+                    <AddUser />
+                </div>
+                <TableList dataList={list} />
             </Container>
         </>
     );

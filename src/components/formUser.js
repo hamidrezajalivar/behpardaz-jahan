@@ -25,29 +25,28 @@ const FormEditUser = (props) => {
         }
 
         setValidated(true);
+        if (form.checkValidity() === true) {
+            if (props.edit) {
 
-        if (props.edit) {
+                axios
+                    .put(`http://localhost:3001/posts/${props.id}`, { ...user })
+                    .then((res) => setuser(res.data))
+                    .catch();
 
-            axios
-                .put(`http://localhost:3001/posts/${props.id}`, { ...user })
-                .then((res) => setuser(res.data))
-                .catch();
+            }
+            else if (props.add) {
+                axios
+                    .post("http://localhost:3001/posts", { ...user })
+
+            }
+            props.setShow(false)
 
         }
-        else {
-            axios
-                .post("http://localhost:3001/posts", { ...user })
-                .then((res) => console.log("post", res.data))
-                .catch();
-
-        }
-        props.setShow(false)
-
-
 
 
 
     };
+    console.log(user);
     return (
         <Form noValidate validated={validated} onSubmit={handleSubmit} >
             <Row className="mb-3">
@@ -79,7 +78,7 @@ const FormEditUser = (props) => {
 
                 <Form.Group as={Col} md="6" controlId="validationCustom04">
                     <Form.Label>City</Form.Label>
-                    <Form.Control type="text" placeholder="City" name="city" onChange={changeHandler} required />
+                    <Form.Control type="text" placeholder="City" name="city" onChange={changeHandler} required  />
                     <Form.Control.Feedback type="invalid">
                         Please provide a valid city.
                     </Form.Control.Feedback>

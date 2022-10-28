@@ -5,6 +5,7 @@ import FormUser from './formUser';
 import { Link } from 'react-router-dom';
 import Modal from 'react-bootstrap/Modal';
 import Table from 'react-bootstrap/Table';
+import axios from "axios";
 import styles from "../styles/tableList.module.css";
 import { useState } from 'react';
 
@@ -18,6 +19,12 @@ const TableList = ({ dataList }) => {
     const handleShowEdit = (event) => {
         setItemId(event.target.value)
         setShow(true);
+    }
+    const deleteUser = (event) => {
+
+        axios
+            .delete(`http://localhost:3001/posts/${event.target.value}`)
+
     }
     return (
         <>
@@ -50,9 +57,9 @@ const TableList = ({ dataList }) => {
                             <td>{item.createdAt}</td>
                             <td>
                                 <div className="d-flex justify-content-around align-items-center">
-                                    <Link to={`/users/${item.id}`}><BsEyeFill style={{fontSize:"27px",margin:"5px 10px"}} /></Link>
+                                    <Link to={`/users/${item.id}`}><BsEyeFill style={{ fontSize: "27px", margin: "5px 10px" }} /></Link>
                                     <Button value={item.id} variant="primary" onClick={(event) => handleShowEdit(event)}>edit</Button>
-
+                                    <Button value={item.id} variant="primary" onClick={(event) => deleteUser(event)}>delete</Button>
                                 </div>
                             </td>
                         </tr>
@@ -69,7 +76,7 @@ const TableList = ({ dataList }) => {
                 <Modal.Header closeButton>
                     <Modal.Title>Edit user</Modal.Title>
                 </Modal.Header>
-                <Modal.Body><FormUser id={itemId} edit={true}/></Modal.Body>
+                <Modal.Body><FormUser id={itemId} edit={true} /></Modal.Body>
 
             </Modal>
 
