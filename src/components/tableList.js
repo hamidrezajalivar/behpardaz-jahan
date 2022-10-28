@@ -1,4 +1,5 @@
-import { BsEyeFill } from "react-icons/bs";
+import { BsEyeFill, BsPencilFill } from "react-icons/bs";
+
 import { Link } from 'react-router-dom';
 import Table from 'react-bootstrap/Table';
 import styles from "../styles/tableList.module.css";
@@ -20,18 +21,24 @@ const TableList = ({ dataList }) => {
                 </thead>
                 <tbody>
                     {dataList.map((item, index) => (
-                     
-                            <tr key={item.id}> 
-                            
-                                <td>{index + 1}</td>
-                                <td>{item.firstName}</td>
-                                <td>{item.lastName}</td>
-                                <td>{item.city}</td>
-                                <td>{item.address}</td>
-                                <td>{item.createdAt}</td>
-                                <td>  <Link to={`/users/${item.id}`}><BsEyeFill/></Link></td>
-                            </tr>
-                        
+
+                        <tr key={item.id}>
+
+                            <td>{index + 1}</td>
+                            <td>{item.firstName}</td>
+                            <td>{item.lastName}</td>
+                            <td>{item.city}</td>
+                            <td>{item.address}</td>
+                            <td>{item.createdAt}</td>
+                            <td>
+                                <div className="d-flex justify-content-around">
+                                    <Link to={`/users/${item.id}`}><BsEyeFill /></Link>
+                                    <BsPencilFill />
+    
+                                </div>
+                            </td>
+                        </tr>
+
                     ))}
 
 

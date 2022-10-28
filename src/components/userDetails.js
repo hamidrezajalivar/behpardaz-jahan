@@ -23,7 +23,7 @@ const UserDetails = () => {
 
 
           <div>
-            <Card style={{ width: '50rem' }} className="d-flex align-items-center mx-auto">
+            <Card style={{ width: '50rem' }} className="d-flex align-items-center mx-auto mt-5">
 
                 <Card.Body>
                     <Card.Title>Full Name : {user.firstName + " "+ user.lastName}</Card.Title>
