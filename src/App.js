@@ -1,11 +1,23 @@
 import './App.css';
 
-import UserList from './components/userList';
+import { Route, Routes } from 'react-router';
+
+import HomePage from './pages/homePage';
+import MainLayout from './components/mainLayout';
+import NotFound from './pages/notFound';
+import UserDetails from './components/userDetails';
 
 function App() {
   return (
     <div className="App">
-      <UserList />
+      <MainLayout>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path='/users/:id' element={<UserDetails/>} />
+          <Route path='*' element={<NotFound />} />
+        </Routes>
+
+      </MainLayout>
     </div>
   );
 }

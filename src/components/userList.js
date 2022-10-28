@@ -7,13 +7,13 @@ const UserList = () => {
     const [list, setList] = useState([]);
 
     useEffect(() => {
-         function dataUser() {
+         function dataUsers() {
              axios
                 .get('https://63581241c27556d289368088.mockapi.io/api/v1/users')
                 .then((response) => setList(response.data))
                 .catch((err) => console.log(err))
         }
-        dataUser();
+        dataUsers();
     }, []);
 
 

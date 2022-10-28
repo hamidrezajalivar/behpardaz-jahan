@@ -1,3 +1,5 @@
+import { BsEyeFill } from "react-icons/bs";
+import { Link } from 'react-router-dom';
 import Table from 'react-bootstrap/Table';
 import styles from "../styles/tableList.module.css";
 
@@ -13,18 +15,23 @@ const TableList = ({ dataList }) => {
                         <th>City</th>
                         <th>Address</th>
                         <th>CreatedAt</th>
+                        <th>actions</th>
                     </tr>
                 </thead>
                 <tbody>
                     {dataList.map((item, index) => (
-                        <tr key={item.id}>
-                            <td>{index + 1}</td>
-                            <td>{item.firstName}</td>
-                            <td>{item.lastName}</td>
-                            <td>{item.city}</td>
-                            <td>{item.address}</td>
-                            <td>{item.createdAt}</td>
-                        </tr>
+                     
+                            <tr key={item.id}> 
+                            
+                                <td>{index + 1}</td>
+                                <td>{item.firstName}</td>
+                                <td>{item.lastName}</td>
+                                <td>{item.city}</td>
+                                <td>{item.address}</td>
+                                <td>{item.createdAt}</td>
+                                <td>  <Link to={`/users/${item.id}`}><BsEyeFill/></Link></td>
+                            </tr>
+                        
                     ))}
 
 
