@@ -1,3 +1,18 @@
 {
-  "posts": []
+  "posts": [
+    {
+      "firstName": "hamidreza",
+      "lastName": "jalivar",
+      "city": "qaemshar",
+      "address": "iran",
+      "id": 1
+    },
+    {
+      "firstName": "ramin",
+      "lastName": "ramzanya",
+      "city": "sari",
+      "address": "behshar",
+      "id": 3
+    }
+  ]
 }

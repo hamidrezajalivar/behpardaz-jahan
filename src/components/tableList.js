@@ -23,7 +23,7 @@ const TableList = ({ dataList }) => {
     const deleteUser = (event) => {
 
         axios
-            .delete(`http://localhost:3001/posts/${event.target.value}`)
+            .delete(`https://63581241c27556d289368088.mockapi.io/api/v1/users/${event.target.value}`)
 
     }
     return (

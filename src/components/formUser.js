@@ -29,14 +29,14 @@ const FormEditUser = (props) => {
             if (props.edit) {
 
                 axios
-                    .put(`http://localhost:3001/posts/${props.id}`, { ...user })
+                    .put(`https://63581241c27556d289368088.mockapi.io/api/v1/users/${props.id}`, { ...user })
                     .then((res) => setuser(res.data))
                     .catch();
 
             }
             else if (props.add) {
                 axios
-                    .post("http://localhost:3001/posts", { ...user })
+                    .post("https://63581241c27556d289368088.mockapi.io/api/v1/users", { ...user })
 
             }
             props.setShow(false)
@@ -46,7 +46,7 @@ const FormEditUser = (props) => {
 
 
     };
-    console.log(user);
+   
     return (
         <Form noValidate validated={validated} onSubmit={handleSubmit} >
             <Row className="mb-3">
