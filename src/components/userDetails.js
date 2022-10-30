@@ -1,20 +1,22 @@
-import { use, useEffect, useState } from "react"
+import { useEffect, useState } from "react"
 
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { Link } from 'react-router-dom';
-import axios from "axios";
+import { getSingleData } from "../services/AllService";
 import { useParams } from 'react-router';
 
 const UserDetails = () => {
     const [user, setUser] = useState([])
     const { id } = useParams();
     useEffect(() => {
-        function dataUser() {
-            axios
-                .get(`https://63581241c27556d289368088.mockapi.io/api/v1/users/${id}`)
-                .then((response) => setUser(response.data))
-                .catch((err) => console.log(err))
+        const dataUser = async () => {
+
+            try {
+                const { data } = await getSingleData(id);
+                setUser(data)
+            } catch (err) { console.log(err) }
+
         }
         dataUser();
     }, [id]);

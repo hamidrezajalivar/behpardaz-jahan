@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
+import { getAllData, postData, putData } from '../services/AllService';
 
 import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
-import axios from 'axios';
+import { toast } from 'react-toastify';
 
 const FormEditUser = (props) => {
     const [validated, setValidated] = useState(false);
@@ -16,27 +17,43 @@ const FormEditUser = (props) => {
 
     }
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
         const form = event.currentTarget;
         if (form.checkValidity() === false) {
             event.preventDefault();
             event.stopPropagation();
+            toast.error("Please enter the fields correctly")
         }
 
         setValidated(true);
         if (form.checkValidity() === true) {
             if (props.edit) {
 
-                axios
-                    .put(`https://63581241c27556d289368088.mockapi.io/api/v1/users/${props.id}`, { ...user })
-                    .then((res) => setuser(res.data))
-                    .catch();
+           
+                    try {
+                        const id=props.id;
+                        await putData(id,user);
+                        const { data } = await getAllData();
+                        props.setList(data);
+                        toast.success("Edited")
+                    }
+                    catch (error) {
+                        console.log(error)
+                    }
 
             }
             else if (props.add) {
-                axios
-                    .post("https://63581241c27556d289368088.mockapi.io/api/v1/users", { ...user })
+                try {
+                    await postData(user);
+                    const { data } = await getAllData();
+                    props.setList(data);
+                    toast.success("User successfully created!")
+                }
+                catch (error) {
+                    console.log(error)
+                }
+
 
             }
             props.setShow(false)
@@ -46,7 +63,7 @@ const FormEditUser = (props) => {
 
 
     };
-   
+
     return (
         <Form noValidate validated={validated} onSubmit={handleSubmit} >
             <Row className="mb-3">
@@ -78,7 +95,7 @@ const FormEditUser = (props) => {
 
                 <Form.Group as={Col} md="6" controlId="validationCustom04">
                     <Form.Label>City</Form.Label>
-                    <Form.Control type="text" placeholder="City" name="city" onChange={changeHandler} required  />
+                    <Form.Control type="text" placeholder="City" name="city" onChange={changeHandler} required />
                     <Form.Control.Feedback type="invalid">
                         Please provide a valid city.
                     </Form.Control.Feedback>
@@ -93,7 +110,7 @@ const FormEditUser = (props) => {
 
             </Row>
 
-            <Button type="submit">{props.edit ? "Edit " : "Submit"}</Button>
+            <Button type="submit" size="lg" className='w-100' >{props.edit ? "Edit " : "Submit"}</Button>
         </Form>
     );
 }
